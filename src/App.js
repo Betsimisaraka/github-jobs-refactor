@@ -1,7 +1,10 @@
 import React from 'react';
+import Home from './pages/home';
 
 export default function App() {
     return (
-        <h1>Github jobs refactoring</h1>
+        <>
+            <Home />
+        </>
     )
 }
