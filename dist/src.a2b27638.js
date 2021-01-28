@@ -32059,7 +32059,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n    font-family: 'Poppins';\n    font-style: normal;\n    font-weight: 400;\n    font-size: 24px;\n    line-height: 36px;\n    color: #282538;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -32069,7 +32069,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n    font-family: 'Poppins';\n    font-style: normal;\n    font-weight: bold;\n    font-size: 24px;\n    line-height: 36px;\n    color: #282538;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -32170,7 +32170,7 @@ var _components = require("../components");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function HeaderContainer() {
-  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, "Jobs")));
+  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, " Jobs")));
 }
 },{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/pages/home.js":[function(require,module,exports) {
 "use strict";
