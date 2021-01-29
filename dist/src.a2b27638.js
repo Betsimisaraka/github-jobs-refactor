@@ -36331,7 +36331,140 @@ function Main({
 }) {
   return /*#__PURE__*/_react.default.createElement(_main.Container, restProps, children);
 }
-},{"react":"node_modules/react/index.js","./styles/main":"src/components/main/styles/main.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/main":"src/components/main/styles/main.js"}],"src/components/detail-header/styles/detail-header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Content = exports.SubTitle = exports.Link = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div``;
+exports.Container = Container;
+const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
+exports.Link = Link;
+const SubTitle = _styledComponents.default.p``;
+exports.SubTitle = SubTitle;
+const Content = _styledComponents.default.p``;
+exports.Content = Content;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/detail-header/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = DetailHeader;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _detailHeader = require("./styles/detail-header");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DetailHeader({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailHeader.Container, restProps, children);
+}
+
+DetailHeader.Link = function DetailHeaderLink({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailHeader.Link, restProps, children);
+};
+
+DetailHeader.SubTitle = function DetailHeaderSubTitle({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailHeader.SubTitle, restProps, children);
+};
+
+DetailHeader.Content = function DetailHeaderContent({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailHeader.Content, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/detail-header":"src/components/detail-header/styles/detail-header.js"}],"src/components/detail-container/styles/detail-container.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Date = exports.Type = exports.Title = exports.Group = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div``;
+exports.Container = Container;
+const Group = _styledComponents.default.div``;
+exports.Group = Group;
+const Title = _styledComponents.default.h2``;
+exports.Title = Title;
+const Type = _styledComponents.default.p``;
+exports.Type = Type;
+const Date = _styledComponents.default.p``;
+exports.Date = Date;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/detail-container/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = DetailContainer;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _detailContainer = require("./styles/detail-container");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DetailContainer({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Container, restProps, children);
+}
+
+DetailContainer.Group = function DetailContainerGroup({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Group, restProps, children);
+};
+
+DetailContainer.Title = function DetailContainerTitle({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Title, restProps, children);
+};
+
+DetailContainer.Type = function DetailContainerType({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Type, restProps, children);
+};
+
+DetailContainer.Date = function DetailContainerDate({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Date, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/detail-container":"src/components/detail-container/styles/detail-container.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36367,6 +36500,18 @@ Object.defineProperty(exports, "Main", {
     return _main.default;
   }
 });
+Object.defineProperty(exports, "DetailHeader", {
+  enumerable: true,
+  get: function () {
+    return _detailHeader.default;
+  }
+});
+Object.defineProperty(exports, "DetailContainer", {
+  enumerable: true,
+  get: function () {
+    return _detailContainer.default;
+  }
+});
 
 var _header = _interopRequireDefault(require("./header"));
 
@@ -36378,8 +36523,12 @@ var _optForm = _interopRequireDefault(require("./opt-form"));
 
 var _main = _interopRequireDefault(require("./main"));
 
+var _detailHeader = _interopRequireDefault(require("./detail-header"));
+
+var _detailContainer = _interopRequireDefault(require("./detail-container"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js","./main":"src/components/main/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js","./main":"src/components/main/index.js","./detail-header":"src/components/detail-header/index.js","./detail-container":"src/components/detail-container/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36737,14 +36886,38 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Details;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _components = require("../components");
+
+var _header = _interopRequireDefault(require("../containers/header"));
+
+var _globalContext = require("../context/globalContext");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function Details() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This is the detail page"));
+  const {
+    id
+  } = (0, _reactRouterDom.useParams)();
+  const {
+    state
+  } = (0, _react.useContext)(_globalContext.GlobalContext);
+  const {
+    githubJobs
+  } = state;
+  const findTheSameId = githubJobs.find(job => job.id === id);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
+    to: "/"
+  }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, null, findTheSameId.how_to_apply)), /*#__PURE__*/_react.default.createElement(_components.DetailContainer, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Type, null, findTheSameId.type), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Date, null, findTheSameId.created_at)))));
 }
-},{"react":"node_modules/react/index.js"}],"src/pages/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js","../containers/header":"src/containers/header.js","../context/globalContext":"src/context/globalContext.js"}],"src/pages/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

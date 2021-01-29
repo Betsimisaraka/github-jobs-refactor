@@ -15,6 +15,7 @@ export default function FormContainer() {
         const filteredGithubJobs = githubJobs
             .filter(githubJob => githubJob.title.toLowerCase().includes(inputToLowerCase)
             || githubJob.company.toLowerCase().includes(inputToLowerCase));
+        
         dispatch({ type: "SEARCH_GITHUB_JOBS", filteredGithubJobs });
         setValue('');
     }

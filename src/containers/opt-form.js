@@ -71,7 +71,7 @@ export default function OptFormContainer() {
                         <OptForm.Group key={city.id}>
                             <OptForm.Input 
                                 type="checkbox"
-                                checked={selectedCities ? city.id === selectedCities.id: false}
+                                checked={selectedCities ? city.id === selectedCities.id : false}
                                 onChange={() => handleCity(city)}
                             />
                             <OptForm.Label>{city.name}</OptForm.Label>
