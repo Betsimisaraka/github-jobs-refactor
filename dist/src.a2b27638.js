@@ -32186,40 +32186,122 @@ Form.Submit = function FormSubmit({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Date = exports.Location = exports.Type = exports.Title = exports.Company = exports.Image = exports.Link = exports.Frame = exports.Group = exports.Container = void 0;
+exports.Date = exports.Location = exports.Type = exports.Title = exports.Company = exports.Group = exports.Image = exports.Link = exports.Frame = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.ul`
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
 `;
 exports.Container = Container;
-const Group = _styledComponents.default.li`
-`;
-exports.Group = Group;
 const Frame = _styledComponents.default.div`
+    grid-column: 2/ 4;
+
+    @media (min-width: 1000px) {
+        grid-column: 2/ 6;
+    }
 `;
 exports.Frame = Frame;
 const Link = _styledComponents.default.a`
 `;
 exports.Link = Link;
 const Image = _styledComponents.default.img`
+     grid-column: 1/ 2;
 `;
 exports.Image = Image;
+const Group = _styledComponents.default.li`
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    column-gap: 20px;
+    padding: 12px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 17px;
+    ${Image} {
+        width: 100%;
+        border-radius: 4px;
+    }
+    @media (min-width: 1000px) {
+        grid-template-columns: repeat(7, 1fr);
+        ${Image} {
+            grid-column: 1/ 2;
+        }
+    }
+`;
+exports.Group = Group;
 const Company = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #334680;
 `;
 exports.Company = Company;
 const Title = _styledComponents.default.h2`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #334680;
 `;
 exports.Title = Title;
 const Type = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #334680;
+    border: 1px solid #334680;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 6px 8px;
+    width: 70px;
 `;
 exports.Type = Type;
 const Location = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #B9BDCF;
+    background-image: url('../images/public.svg');
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    padding-left: 1.5rem;
+    grid-column: 2 / 3;
+    align-self: end;
+
+    @media (min-width: 1000px) {
+        grid-column: 6 / 7;
+    }
 `;
 exports.Location = Location;
 const Date = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #B7BCCE;
+    grid-column: 3/4;
+    align-self: end;
+
+    @media (min-width: 1000px) {
+        grid-column: 7/8;
+    }
 `;
 exports.Date = Date;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/card/index.js":[function(require,module,exports) {
@@ -32577,7 +32659,36 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function App() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_home.default, null));
 }
-},{"react":"node_modules/react/index.js","./pages/home":"src/pages/home.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./pages/home":"src/pages/home.js"}],"src/global-styles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GlobalStyles = void 0;
+
+var _styledComponents = require("styled-components");
+
+const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
+    html {
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    }
+    body {
+        background: #F6F7FB;
+        border-radius: 12px;
+    }
+    p, h3, ul {
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+`;
+exports.GlobalStyles = GlobalStyles;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -32588,10 +32699,12 @@ var _App = _interopRequireDefault(require("./App"));
 
 var _globalContext = require("./context/globalContext");
 
+var _globalStyles = require("./global-styles");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_globalContext.GlobalContextProvider, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"src/App.js","./context/globalContext":"src/context/globalContext.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_globalContext.GlobalContextProvider, null, /*#__PURE__*/_react.default.createElement(_globalStyles.GlobalStyles, null), /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('root'));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"src/App.js","./context/globalContext":"src/context/globalContext.js","./global-styles":"src/global-styles.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
