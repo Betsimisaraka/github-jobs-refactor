@@ -3,7 +3,7 @@ import { OptForm } from '../components';
 import { GlobalContext } from '../context/globalContext';
 
 export default function OptFormContainer() {
-    const { state, dispatch } = useContext(GlobalContext);
+    const { dispatch } = useContext(GlobalContext);
 
     const [location, setLocation] = useState('');
     const [selectedCities, setSelectedCities] = useState(null);
@@ -70,7 +70,7 @@ export default function OptFormContainer() {
                     {cities.map(city => (
                         <OptForm.Group key={city.id}>
                             <OptForm.Input 
-                                type="radio"
+                                type="checkbox"
                                 checked={selectedCities ? city.id === selectedCities.id: false}
                                 onChange={() => handleCity(city)}
                             />

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as ReachRouterLink } from 'react-router-dom';
 
 export const Container = styled.ul`
     display: grid;
@@ -20,7 +21,8 @@ export const Frame = styled.div`
     }
 `;
 
-export const Link = styled.a`
+export const Link = styled(ReachRouterLink)`
+    text-decoration: none;
 `;
 
 export const Image = styled.img`
