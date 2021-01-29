@@ -32198,6 +32198,10 @@ const Container = _styledComponents.default.ul`
     row-gap: 32px;
     margin-top: 32px;
     margin-bottom: 32px;
+
+    @media (min-width: 1000px) {
+        margin-top: unset;
+    }
 `;
 exports.Container = Container;
 const Frame = _styledComponents.default.div`
@@ -32406,15 +32410,46 @@ const Base = _styledComponents.default.form`
 `;
 exports.Base = Base;
 const Group = _styledComponents.default.fieldset`
+
 `;
 exports.Group = Group;
 const Frame = _styledComponents.default.div`
 `;
 exports.Frame = Frame;
 const Input = _styledComponents.default.input`
+        background: #FFFFFF;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+        padding-top: 17px;
+        padding-bottom: 17px;
+        padding-left: 32px;
+        padding-right: 14px;
+        border: none;
+        background-image: url('../images/public.svg');
+        background-repeat: no-repeat;
+        background-size: 1rem;
+        background-position: 2% 50%;
 `;
 exports.Input = Input;
 const Label = _styledComponents.default.label`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #334680;
+    margin-left: 12px;
+
+    &:nth-child(1) {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 21px;
+        text-transform: uppercase;
+        color: #B9BDCF;
+        padding-bottom: 14px;
+    }
 `;
 exports.Label = Label;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/opt-form/index.js":[function(require,module,exports) {
@@ -32472,7 +32507,51 @@ OptForm.Label = function OptFormLabel({
 }) {
   return /*#__PURE__*/_react.default.createElement(_optForm.Label, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/opt-form":"src/components/opt-form/styles/opt-form.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/opt-form":"src/components/opt-form/styles/opt-form.js"}],"src/components/main/styles/main.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 42px;
+
+    @media (min-width: 1000px) {
+        flex-direction: row;
+        padding-top: 42px;
+    }
+`;
+exports.Container = Container;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/main/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Main;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _main = require("./styles/main");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Main({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_main.Container, restProps, children);
+}
+},{"react":"node_modules/react/index.js","./styles/main":"src/components/main/styles/main.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32502,6 +32581,12 @@ Object.defineProperty(exports, "OptForm", {
     return _optForm.default;
   }
 });
+Object.defineProperty(exports, "Main", {
+  enumerable: true,
+  get: function () {
+    return _main.default;
+  }
+});
 
 var _header = _interopRequireDefault(require("./header"));
 
@@ -32511,8 +32596,10 @@ var _card = _interopRequireDefault(require("./card"));
 
 var _optForm = _interopRequireDefault(require("./opt-form"));
 
+var _main = _interopRequireDefault(require("./main"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js","./main":"src/components/main/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32793,6 +32880,7 @@ function OptFormContainer() {
     checked: fullTime,
     onChange: handleClick
   }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Full time")), /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Location"), /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+    type: "text",
     placeholder: "City, state, zip code or country",
     name: "location",
     value: location,
@@ -32801,7 +32889,7 @@ function OptFormContainer() {
   })), /*#__PURE__*/_react.default.createElement(_components.OptForm.Frame, null, cities.map(city => /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, {
     key: city.id
   }, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
-    type: "checkbox",
+    type: "radio",
     checked: selectedCities ? city.id === selectedCities.id : false,
     onChange: () => handleCity(city)
   }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, city.name))))));
@@ -32816,6 +32904,8 @@ exports.default = Home;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _components = require("../components");
+
 var _card = _interopRequireDefault(require("../containers/card"));
 
 var _form = _interopRequireDefault(require("../containers/form"));
@@ -32827,9 +32917,9 @@ var _optForm = _interopRequireDefault(require("../containers/opt-form"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Home() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_form.default, null)), /*#__PURE__*/_react.default.createElement(_optForm.default, null), /*#__PURE__*/_react.default.createElement(_card.default, null));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_form.default, null)), /*#__PURE__*/_react.default.createElement(_components.Main, null, /*#__PURE__*/_react.default.createElement(_optForm.default, null), /*#__PURE__*/_react.default.createElement(_card.default, null)));
 }
-},{"react":"node_modules/react/index.js","../containers/card":"src/containers/card.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js","../containers/opt-form":"src/containers/opt-form.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js","../containers/card":"src/containers/card.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js","../containers/opt-form":"src/containers/opt-form.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

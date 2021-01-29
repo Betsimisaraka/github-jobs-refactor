@@ -6,6 +6,10 @@ export const Container = styled.ul`
     row-gap: 32px;
     margin-top: 32px;
     margin-bottom: 32px;
+
+    @media (min-width: 1000px) {
+        margin-top: unset;
+    }
 `;
 
 export const Frame = styled.div`

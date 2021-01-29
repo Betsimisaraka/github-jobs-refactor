@@ -58,6 +58,7 @@ export default function OptFormContainer() {
                 <OptForm.Group>
                     <OptForm.Label>Location</OptForm.Label>
                     <OptForm.Input 
+                        type="text"
                         placeholder="City, state, zip code or country"
                         name="location"
                         value={location}
@@ -69,7 +70,7 @@ export default function OptFormContainer() {
                     {cities.map(city => (
                         <OptForm.Group key={city.id}>
                             <OptForm.Input 
-                                type="checkbox"
+                                type="radio"
                                 checked={selectedCities ? city.id === selectedCities.id: false}
                                 onChange={() => handleCity(city)}
                             />
