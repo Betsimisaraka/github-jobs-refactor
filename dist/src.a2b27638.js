@@ -32410,7 +32410,6 @@ const Base = _styledComponents.default.form`
 `;
 exports.Base = Base;
 const Group = _styledComponents.default.fieldset`
-
 `;
 exports.Group = Group;
 const Frame = _styledComponents.default.div`
@@ -32767,18 +32766,48 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = FormContainer;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _globalContext = require("../context/globalContext");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function FormContainer() {
-  return /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_components.Form.Base, null, /*#__PURE__*/_react.default.createElement(_components.Form.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
-    placeholder: "Title, companies, expertise or benefits"
+  const [value, setValue] = (0, _react.useState)('');
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_globalContext.GlobalContext);
+  const {
+    githubJobs
+  } = state;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const input = e.target.searchJobs.value;
+    const inputToLowerCase = input.toLowerCase();
+    const filteredGithubJobs = githubJobs.filter(githubJob => githubJob.title.toLowerCase().includes(inputToLowerCase) || githubJob.company.toLowerCase().includes(inputToLowerCase));
+    dispatch({
+      type: "SEARCH_GITHUB_JOBS",
+      filteredGithubJobs
+    });
+    setValue('');
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_components.Form.Base, {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/_react.default.createElement(_components.Form.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
+    name: "searchJobs",
+    placeholder: "Title, companies, expertise or benefits",
+    value: value,
+    onChange: e => setValue(e.target.value)
   }), /*#__PURE__*/_react.default.createElement(_components.Form.Submit, null, "Search"))));
 }
-},{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/containers/header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js","../context/globalContext":"src/context/globalContext.js"}],"src/containers/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -7,7 +7,6 @@ export const Base = styled.form`
 `;
 
 export const Group = styled.fieldset`
-
 `;
 
 export const Frame = styled.div`
