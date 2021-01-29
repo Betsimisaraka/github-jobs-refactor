@@ -32296,7 +32296,26 @@ var _header = _interopRequireDefault(require("./header"));
 var _form = _interopRequireDefault(require("./form"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js"}],"src/containers/header.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js"}],"src/containers/form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormContainer;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _components = require("../components");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FormContainer() {
+  return /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_components.Form.Base, null, /*#__PURE__*/_react.default.createElement(_components.Form.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
+    placeholder: "Title, companies, expertise or benefits"
+  }), /*#__PURE__*/_react.default.createElement(_components.Form.Submit, null, "Search"))));
+}
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/containers/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32310,10 +32329,9 @@ var _components = require("../components");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function HeaderContainer() {
-  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, " Jobs")), /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_components.Form.Base, null, /*#__PURE__*/_react.default.createElement(_components.Form.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
-    placeholder: "Title, companies, expertise or benefits"
-  }), /*#__PURE__*/_react.default.createElement(_components.Form.Submit, null, "Search")))));
+function HeaderContainer(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, " Jobs")), children);
 }
 },{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/pages/home.js":[function(require,module,exports) {
 "use strict";
@@ -32325,14 +32343,16 @@ exports.default = Home;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _form = _interopRequireDefault(require("../containers/form"));
+
 var _header = _interopRequireDefault(require("../containers/header"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Home() {
-  return /*#__PURE__*/_react.default.createElement(_header.default, null);
+  return /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_form.default, null));
 }
-},{"react":"node_modules/react/index.js","../containers/header":"src/containers/header.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
