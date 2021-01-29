@@ -7,8 +7,19 @@ export const Container = styled.div`
     background-position: center;
     height: 138px;
     border-radius: 8px;
-    /* display: flex; */
+    display: flex;
     text-align: center;
+`;
+
+export const Base = styled.form`
+    width: 790px;
+    margin-right: 18px;
+    margin-left: 18px;
+    align-self: center;
+    @media (min-width: 1000px) {
+        margin-right: auto;
+        margin-left: auto;
+    }
 `;
 
 export const Fieldset = styled.fieldset`
@@ -29,7 +40,7 @@ export const Input = styled.input`
     padding-bottom: 14px;
     padding-left: 48px;
     border: none;
-    background-image: url('../assets/work.svg');
+    background-image: url('../images/work.svg');
     background-repeat: no-repeat;
     background-size: 1rem;
     background-position: 5% 50%;

@@ -32145,14 +32145,24 @@ Header.Span = function HeaderSpan(_ref3) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Submit = exports.Input = exports.Fieldset = exports.Container = void 0;
+exports.Submit = exports.Input = exports.Fieldset = exports.Base = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _templateObject4() {
+function _templateObject5() {
   var data = _taggedTemplateLiteral(["\n    background: #1E86FF;\n    border-radius: 4px;\n    font-family: 'Roboto';\n    font-style: normal;\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 19px;\n    color: #FFFFFF;\n    padding: 14px 48px;\n    border: none;\n    margin-right: 4px;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n    width: 50%;\n    padding-top: 14px;\n    padding-bottom: 14px;\n    padding-left: 48px;\n    border: none;\n    background-image: url('../images/work.svg');\n    background-repeat: no-repeat;\n    background-size: 1rem;\n    background-position: 5% 50%;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -32162,7 +32172,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n    width: 50%;\n    padding-top: 14px;\n    padding-bottom: 14px;\n    padding-left: 48px;\n    border: none;\n    background-image: url('../assets/work.svg');\n    background-repeat: no-repeat;\n    background-size: 1rem;\n    background-position: 5% 50%;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    flex-wrap: wrap;\n    background: #FFFFFF;\n    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);\n    border-radius: 4px;\n    border: none;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -32172,7 +32182,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    flex-wrap: wrap;\n    background: #FFFFFF;\n    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);\n    border-radius: 4px;\n    border: none;\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 790px;\n    margin-right: 18px;\n    margin-left: 18px;\n    align-self: center;\n    @media (min-width: 1000px) {\n        margin-right: auto;\n        margin-left: auto;\n    }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -32182,7 +32192,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    background-image: url('../images/backgroundimg.png');\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    height: 138px;\n    border-radius: 8px;\n    /* display: flex; */\n    text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n    background-image: url('../images/backgroundimg.png');\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    height: 138px;\n    border-radius: 8px;\n    display: flex;\n    text-align: center;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -32197,15 +32207,19 @@ var Container = _styledComponents.default.div(_templateObject());
 
 exports.Container = Container;
 
-var Fieldset = _styledComponents.default.fieldset(_templateObject2());
+var Base = _styledComponents.default.form(_templateObject2());
+
+exports.Base = Base;
+
+var Fieldset = _styledComponents.default.fieldset(_templateObject3());
 
 exports.Fieldset = Fieldset;
 
-var Input = _styledComponents.default.input(_templateObject3());
+var Input = _styledComponents.default.input(_templateObject4());
 
 exports.Input = Input;
 
-var Submit = _styledComponents.default.button(_templateObject4());
+var Submit = _styledComponents.default.button(_templateObject5());
 
 exports.Submit = Submit;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/form/index.js":[function(require,module,exports) {
@@ -32233,21 +32247,28 @@ function Form(_ref) {
   return /*#__PURE__*/_react.default.createElement(_form.Container, restProps, children);
 }
 
-Form.Fieldset = function FormFieldset(_ref2) {
+Form.Base = function FormBase(_ref2) {
   var children = _ref2.children,
       restProps = _objectWithoutProperties(_ref2, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_form.Base, restProps, children);
+};
+
+Form.Fieldset = function FormFieldset(_ref3) {
+  var children = _ref3.children,
+      restProps = _objectWithoutProperties(_ref3, ["children"]);
 
   return /*#__PURE__*/_react.default.createElement(_form.Fieldset, restProps, children);
 };
 
-Form.Input = function FormInput(_ref3) {
-  var restProps = Object.assign({}, _ref3);
+Form.Input = function FormInput(_ref4) {
+  var restProps = Object.assign({}, _ref4);
   return /*#__PURE__*/_react.default.createElement(_form.Input, restProps);
 };
 
-Form.Submit = function FormSubmit(_ref4) {
-  var children = _ref4.children,
-      restProps = _objectWithoutProperties(_ref4, ["children"]);
+Form.Submit = function FormSubmit(_ref5) {
+  var children = _ref5.children,
+      restProps = _objectWithoutProperties(_ref5, ["children"]);
 
   return /*#__PURE__*/_react.default.createElement(_form.Submit, restProps, children);
 };
@@ -32290,9 +32311,9 @@ var _components = require("../components");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function HeaderContainer() {
-  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, " Jobs")), /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_components.Form.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
-    placeholder: "Search"
-  }), /*#__PURE__*/_react.default.createElement(_components.Form.Submit, null, "Search"))));
+  return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, " Jobs")), /*#__PURE__*/_react.default.createElement(_components.Form, null, /*#__PURE__*/_react.default.createElement(_components.Form.Base, null, /*#__PURE__*/_react.default.createElement(_components.Form.Fieldset, null, /*#__PURE__*/_react.default.createElement(_components.Form.Input, {
+    placeholder: "Title, companies, expertise or benefits"
+  }), /*#__PURE__*/_react.default.createElement(_components.Form.Submit, null, "Search")))));
 }
 },{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/pages/home.js":[function(require,module,exports) {
 "use strict";
@@ -32368,7 +32389,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52677" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49688" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

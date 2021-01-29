@@ -9,12 +9,14 @@ export default function HeaderContainer() {
                 <Header.Span> Jobs</Header.Span>
             </Header.Title>
             <Form>
-                <Form.Fieldset>
-                    <Form.Input
-                        placeholder="Search"
-                    />
-                    <Form.Submit>Search</Form.Submit>
-                </Form.Fieldset>
+                <Form.Base>
+                    <Form.Fieldset>
+                        <Form.Input
+                            placeholder="Title, companies, expertise or benefits"
+                        />
+                        <Form.Submit>Search</Form.Submit>
+                    </Form.Fieldset>
+                </Form.Base>
             </Form>
         </Header>
     )
