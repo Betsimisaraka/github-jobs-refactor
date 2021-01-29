@@ -32387,7 +32387,92 @@ Card.Date = function CardDate({
 }) {
   return /*#__PURE__*/_react.default.createElement(_card.Date, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/card":"src/components/card/styles/card.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/card":"src/components/card/styles/card.js"}],"src/components/opt-form/styles/opt-form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Label = exports.Input = exports.Frame = exports.Group = exports.Base = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div`
+`;
+exports.Container = Container;
+const Base = _styledComponents.default.form`
+`;
+exports.Base = Base;
+const Group = _styledComponents.default.fieldset`
+`;
+exports.Group = Group;
+const Frame = _styledComponents.default.div`
+`;
+exports.Frame = Frame;
+const Input = _styledComponents.default.input`
+`;
+exports.Input = Input;
+const Label = _styledComponents.default.label`
+`;
+exports.Label = Label;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/opt-form/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = OptForm;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _optForm = require("./styles/opt-form");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function OptForm({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Container, restProps, children);
+}
+
+OptForm.Base = function OptFormBase({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Base, restProps, children);
+};
+
+OptForm.Group = function OptFormGroup({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Group, restProps, children);
+};
+
+OptForm.Frame = function OptFormFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Frame, restProps, children);
+};
+
+OptForm.Input = function OptFormInput({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Input, restProps, children);
+};
+
+OptForm.Label = function OptFormLabel({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Label, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/opt-form":"src/components/opt-form/styles/opt-form.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32411,6 +32496,12 @@ Object.defineProperty(exports, "Card", {
     return _card.default;
   }
 });
+Object.defineProperty(exports, "OptForm", {
+  enumerable: true,
+  get: function () {
+    return _optForm.default;
+  }
+});
 
 var _header = _interopRequireDefault(require("./header"));
 
@@ -32418,8 +32509,10 @@ var _form = _interopRequireDefault(require("./form"));
 
 var _card = _interopRequireDefault(require("./card"));
 
+var _optForm = _interopRequireDefault(require("./opt-form"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32523,15 +32616,13 @@ function GlobalContextProvider({
     location,
     fullTime
   } = state;
-  console.log(state);
   (0, _react.useEffect)(() => {
     setTimeout(() => {
       async function fetchData() {
         const CORS = "https://cors-anywhere.herokuapp.com/";
         const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}&markdown=true`;
         const response = await fetch(CORS + URL_API);
-        const data = await response.json();
-        console.log(data); //Sharing into five each page
+        const data = await response.json(); //Sharing into five each page
         // setCountPage(Math.ceil(data.length / perPage));
 
         dispatch({
@@ -32570,13 +32661,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function CardContainer() {
   const {
-    state,
-    dispatch
+    state
   } = (0, _react.useContext)(_globalContext.GlobalContext);
   const {
     githubJobs
   } = state;
-  console.log(githubJobs);
   return /*#__PURE__*/_react.default.createElement(_components.Card, null, githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_components.Card.Group, {
     key: job.id
   }, /*#__PURE__*/_react.default.createElement(_components.Card.Image, {
@@ -32621,7 +32710,103 @@ function HeaderContainer({
 }) {
   return /*#__PURE__*/_react.default.createElement(_components.Header, null, /*#__PURE__*/_react.default.createElement(_components.Header.Title, null, "Github", /*#__PURE__*/_react.default.createElement(_components.Header.Span, null, " Jobs")), children);
 }
-},{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/pages/home.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/containers/opt-form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = OptFormContainer;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _components = require("../components");
+
+var _globalContext = require("../context/globalContext");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function OptFormContainer() {
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_globalContext.GlobalContext);
+  const [location, setLocation] = (0, _react.useState)('');
+  const [selectedCities, setSelectedCities] = (0, _react.useState)(null);
+  const [fullTime, setFullTime] = (0, _react.useState)(false);
+  let cities = [{
+    id: 1,
+    name: "London"
+  }, {
+    id: 2,
+    name: "Amsterdam"
+  }, {
+    id: 3,
+    name: "New york"
+  }, {
+    id: 4,
+    name: "Berlin"
+  }];
+
+  function handleClick() {
+    setFullTime(!fullTime);
+    dispatch({
+      type: "fulltime",
+      value: true
+    });
+  }
+
+  function handleCity(city) {
+    if (selectedCities && city.id === selectedCities.id) {
+      setSelectedCities(null);
+      dispatch({
+        type: "location",
+        value: ""
+      });
+    } else {
+      setSelectedCities(city);
+      dispatch({
+        type: "location",
+        value: city.name
+      });
+    }
+  }
+
+  function handleLocation(e) {
+    if (e.key === "Enter") {
+      setSelectedCities(null);
+      dispatch({
+        type: "location",
+        value: location
+      });
+    }
+  }
+
+  (0, _react.useEffect)(() => {
+    setSelectedCities(cities[2]);
+  }, []);
+  return /*#__PURE__*/_react.default.createElement(_components.OptForm, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Base, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+    type: "checkbox",
+    name: "fullTime",
+    checked: fullTime,
+    onChange: handleClick
+  }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Full time")), /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Location"), /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+    placeholder: "City, state, zip code or country",
+    name: "location",
+    value: location,
+    onChange: e => setLocation(e.target.value),
+    onKeyDown: handleLocation
+  })), /*#__PURE__*/_react.default.createElement(_components.OptForm.Frame, null, cities.map(city => /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, {
+    key: city.id
+  }, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+    type: "checkbox",
+    checked: selectedCities ? city.id === selectedCities.id : false,
+    onChange: () => handleCity(city)
+  }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, city.name))))));
+}
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js","../context/globalContext":"src/context/globalContext.js"}],"src/pages/home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32637,12 +32822,14 @@ var _form = _interopRequireDefault(require("../containers/form"));
 
 var _header = _interopRequireDefault(require("../containers/header"));
 
+var _optForm = _interopRequireDefault(require("../containers/opt-form"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Home() {
-  return /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_form.default, null), /*#__PURE__*/_react.default.createElement(_card.default, null));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_form.default, null)), /*#__PURE__*/_react.default.createElement(_optForm.default, null), /*#__PURE__*/_react.default.createElement(_card.default, null));
 }
-},{"react":"node_modules/react/index.js","../containers/card":"src/containers/card.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../containers/card":"src/containers/card.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js","../containers/opt-form":"src/containers/opt-form.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32685,6 +32872,9 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+    fieldset {
+        border: none;
     }
 `;
 exports.GlobalStyles = GlobalStyles;

@@ -6,7 +6,6 @@ const GlobalContext = createContext();
 function GlobalContextProvider({ children }) {
     const { state, dispatch } = UseReducer();
     const { description, location, fullTime } = state;
-    console.log(state);
 
     useEffect(() => {
         setTimeout(() => {
@@ -15,7 +14,6 @@ function GlobalContextProvider({ children }) {
                 const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}&markdown=true`;
                 const response = await fetch(CORS + URL_API);
                 const data = await response.json();
-                console.log(data);
                 //Sharing into five each page
                 // setCountPage(Math.ceil(data.length / perPage));
                 dispatch({ type: "FETCH_JOBS", githubJob: data });

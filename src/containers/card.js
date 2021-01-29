@@ -3,9 +3,8 @@ import { Card } from '../components';
 import { GlobalContext } from '../context/globalContext';
 
 export default function CardContainer() {
-    const { state, dispatch } = useContext(GlobalContext);
+    const { state } = useContext(GlobalContext);
     const { githubJobs } = state;
-    console.log(githubJobs);
 
     return (
         <Card>
