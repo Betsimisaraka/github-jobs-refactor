@@ -35571,6 +35571,9 @@ const Container = _styledComponents.default.ul`
     row-gap: 32px;
     margin-top: 32px;
     margin-bottom: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
     @media (min-width: 1000px) {
         margin-top: unset;
@@ -35784,9 +35787,17 @@ const Base = _styledComponents.default.form`
 `;
 exports.Base = Base;
 const Group = _styledComponents.default.fieldset`
+     &:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 exports.Group = Group;
 const Frame = _styledComponents.default.div`
+    ${Group} {
+        display: flex;
+        flex-direction: row;
+    }
 `;
 exports.Frame = Frame;
 const Input = _styledComponents.default.input`
@@ -71549,7 +71560,7 @@ function DetailContainer() {
   const {
     githubJobs
   } = state;
-  const findTheSameId = githubJobs.find(job => job.id === id);
+  const findTheSameId = githubJobs && githubJobs.find(job => job.id === id);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_components.Detail, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
     to: "/"
   }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, {
@@ -71647,15 +71658,11 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         background: #F6F7FB;
         border-radius: 12px;
     }
-    p, h3, ul {
+    p, h3 {
         margin: 0;
         padding: 0;
     }
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+    
     fieldset {
         border: none;
     }

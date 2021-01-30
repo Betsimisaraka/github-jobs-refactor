@@ -12,7 +12,7 @@ export default function DetailContainer() {
     const { state } = useContext(GlobalContext);
     const { githubJobs } = state;
 
-    const findTheSameId = githubJobs.find(job => job.id === id);
+    const findTheSameId = githubJobs && githubJobs.find(job => job.id === id);
 
     return (
         <>

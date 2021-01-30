@@ -7,9 +7,17 @@ export const Base = styled.form`
 `;
 
 export const Group = styled.fieldset`
+     &:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 export const Frame = styled.div`
+    ${Group} {
+        display: flex;
+        flex-direction: row;
+    }
 `;
 
 export const Input = styled.input`

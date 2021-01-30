@@ -7,6 +7,9 @@ export const Container = styled.ul`
     row-gap: 32px;
     margin-top: 32px;
     margin-bottom: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
     @media (min-width: 1000px) {
         margin-top: unset;
