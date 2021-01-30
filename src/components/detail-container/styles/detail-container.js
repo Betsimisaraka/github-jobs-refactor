@@ -48,6 +48,7 @@ export const Type = styled.p`
     border-radius: 4px;
     padding: 6px 8px;
     width: 70px;
+    margin: 0;
 
     @media (min-width: 1000px) {
         grid-column: 2 / 3
@@ -64,6 +65,7 @@ export const Date = styled.p`
     grid-column: 3/4;
     align-self: end;
     padding-top: 10px;
+    margin: 0;
 
     @media (min-width: 1000px) {
         grid-column: 1 / 2;
@@ -86,6 +88,7 @@ export const SubTitle = styled.h3`
     line-height: 21px;
     color: #334680;
     padding-bottom: 10px;
+    margin: 0;
 `;
 
 export const Location = styled.p`
@@ -101,6 +104,7 @@ export const Location = styled.p`
     padding-left: 1.5rem;
     grid-column: 2 / 3;
     align-self: end;
+    margin: 0;
 `;
 
 export const Description = styled.p`
@@ -110,5 +114,7 @@ export const Description = styled.p`
     font-size: 16px;
     line-height: 150%;
     color: #334680;
+    margin: 0;
+    padding: 0;
 `;
 

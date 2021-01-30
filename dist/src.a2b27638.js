@@ -35626,6 +35626,8 @@ const Company = _styledComponents.default.p`
     font-size: 12px;
     line-height: 14px;
     color: #334680;
+    margin: 0;
+    padding: 0;
 `;
 exports.Company = Company;
 const Title = _styledComponents.default.h2`
@@ -35649,6 +35651,7 @@ const Type = _styledComponents.default.p`
     border-radius: 4px;
     padding: 6px 8px;
     width: 70px;
+    margin: 0;
 `;
 exports.Type = Type;
 const Location = _styledComponents.default.p`
@@ -35664,6 +35667,7 @@ const Location = _styledComponents.default.p`
     padding-left: 1.5rem;
     grid-column: 2 / 3;
     align-self: end;
+    margin: 0;
 
     @media (min-width: 1000px) {
         grid-column: 6 / 7;
@@ -35679,6 +35683,8 @@ const Date = _styledComponents.default.p`
     color: #B7BCCE;
     grid-column: 3/4;
     align-self: end;
+    margin: 0;
+    padding: 0;
 
     @media (min-width: 1000px) {
         grid-column: 7/8;
@@ -36018,6 +36024,7 @@ const SubTitle = _styledComponents.default.p`
     color: #B9BDCF;
     padding-top: 36px;
     padding-bottom: 16px;
+    margin: 0;
 `;
 exports.SubTitle = SubTitle;
 const Content = _styledComponents.default.p`
@@ -36028,6 +36035,7 @@ const Content = _styledComponents.default.p`
     line-height: 21px;
     color: #334680;
     padding-bottom: 36px;
+    margin: 0;
 `;
 exports.Content = Content;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/detail-header/index.js":[function(require,module,exports) {
@@ -36131,6 +36139,7 @@ const Type = _styledComponents.default.p`
     border-radius: 4px;
     padding: 6px 8px;
     width: 70px;
+    margin: 0;
 
     @media (min-width: 1000px) {
         grid-column: 2 / 3
@@ -36147,6 +36156,7 @@ const Date = _styledComponents.default.p`
     grid-column: 3/4;
     align-self: end;
     padding-top: 10px;
+    margin: 0;
 
     @media (min-width: 1000px) {
         grid-column: 1 / 2;
@@ -36169,6 +36179,7 @@ const SubTitle = _styledComponents.default.h3`
     line-height: 21px;
     color: #334680;
     padding-bottom: 10px;
+    margin: 0;
 `;
 exports.SubTitle = SubTitle;
 const Location = _styledComponents.default.p`
@@ -36184,6 +36195,7 @@ const Location = _styledComponents.default.p`
     padding-left: 1.5rem;
     grid-column: 2 / 3;
     align-self: end;
+    margin: 0;
 `;
 exports.Location = Location;
 const Description = _styledComponents.default.p`
@@ -36193,6 +36205,8 @@ const Description = _styledComponents.default.p`
     font-size: 16px;
     line-height: 150%;
     color: #334680;
+    margin: 0;
+    padding: 0;
 `;
 exports.Description = Description;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/detail-container/index.js":[function(require,module,exports) {
@@ -71491,9 +71505,9 @@ function OptFormContainer() {
   })), /*#__PURE__*/_react.default.createElement(_components.OptForm.Frame, null, cities.map(city => /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, {
     key: city.id
   }, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
-    type: "checkbox",
+    type: "radio",
     value: city.name,
-    checked: selectedCities ? city.id === selectedCities.id : false,
+    checked: selectedCities ? city.id === selectedCities.id : null,
     onChange: () => handleCity(city)
   }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, city.name))))));
 }
@@ -71561,7 +71575,7 @@ function DetailContainer() {
     githubJobs
   } = state;
   const findTheSameId = githubJobs && githubJobs.find(job => job.id === id);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_components.Detail, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_components.Detail, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
     to: "/"
   }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, {
     dangerouslySetInnerHTML: {
@@ -71658,7 +71672,9 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
         background: #F6F7FB;
         border-radius: 12px;
     }
-    p, h3 {
+
+    ul {
+        list-style: none;
         margin: 0;
         padding: 0;
     }

@@ -83,9 +83,9 @@ export default function OptFormContainer() {
                     {cities.map(city => (
                         <OptForm.Group key={city.id}>
                             <OptForm.Input 
-                                type="checkbox"
+                                type="radio"
                                 value={city.name}
-                                checked={selectedCities ? city.id === selectedCities.id : false}
+                                checked={selectedCities ? city.id === selectedCities.id : null}
                                 onChange={() => handleCity(city)}
                             />
                             <OptForm.Label>{city.name}</OptForm.Label>

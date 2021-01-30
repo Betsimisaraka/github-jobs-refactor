@@ -8,7 +8,9 @@ export const GlobalStyles = createGlobalStyle`
         background: #F6F7FB;
         border-radius: 12px;
     }
-    p, h3 {
+
+    ul {
+        list-style: none;
         margin: 0;
         padding: 0;
     }

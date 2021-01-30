@@ -16,8 +16,8 @@ export default function DetailContainer() {
 
     return (
         <>
-        <HeaderContainer />
         <Detail>
+            <HeaderContainer />
             <DetailHeader>
                 <DetailHeader.Link to="/">⬅ Back to search</DetailHeader.Link>
                 <DetailHeader.SubTitle>How to apply</DetailHeader.SubTitle>

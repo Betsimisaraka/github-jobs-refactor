@@ -27,6 +27,7 @@ export const SubTitle = styled.p`
     color: #B9BDCF;
     padding-top: 36px;
     padding-bottom: 16px;
+    margin: 0;
 `;
 
 export const Content = styled.p`
@@ -37,4 +38,5 @@ export const Content = styled.p`
     line-height: 21px;
     color: #334680;
     padding-bottom: 36px;
+    margin: 0;
 `;
