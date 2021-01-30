@@ -3,11 +3,8 @@ import { OptForm } from '../components';
 import { GlobalContext } from '../context/globalContext';
 
 export default function OptFormContainer() {
-    const { dispatch } = useContext(GlobalContext);
-
-    const [location, setLocation] = useState('');
-    const [selectedCities, setSelectedCities] = useState(null);
-    const [fullTime, setFullTime] = useState(false);
+    const { dispatch, state } = useContext(GlobalContext);
+    const { githubJobs } = state;
 
     let cities = [
         { id: 1, name: "London" },
@@ -16,10 +13,26 @@ export default function OptFormContainer() {
         { id: 4, name: "Berlin" }
     ];
 
+    const [location, setLocation] = useState('');
+    const [fullTime, setFullTime] = useState(false);
+    const [selectedCities, setSelectedCities] = useState(null);
+    // const [checkCity, setCheckCity] = useState(''); 
+
     function handleClick() {
         setFullTime(!fullTime);
         dispatch({ type: "fulltime", value: true });
     }
+
+    // function handleCity(e) {
+    //     setCheckCity(e.target.value);
+    // }
+
+    // useEffect(() => {
+    //     const input = checkCity;
+    //     const filter = githubJobs.filter((job, city) => job.location.toLowerCase().includes(input.toLowerCase()));
+    //     dispatch({ type: "location", value: filter })
+    //     console.log(filter);
+    // }, [checkCity])
 
     function handleCity(city) {
         if (selectedCities && city.id === selectedCities.id) {
@@ -71,6 +84,7 @@ export default function OptFormContainer() {
                         <OptForm.Group key={city.id}>
                             <OptForm.Input 
                                 type="checkbox"
+                                value={city.name}
                                 checked={selectedCities ? city.id === selectedCities.id : false}
                                 onChange={() => handleCity(city)}
                             />

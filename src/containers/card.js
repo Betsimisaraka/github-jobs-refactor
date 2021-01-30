@@ -3,9 +3,10 @@ import { Card } from '../components';
 import { GlobalContext } from '../context/globalContext';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import  { DateFormated } from '../utils/date-format';
+import ReactPaginate from 'react-paginate';
 
 export default function CardContainer() {
-    const { state } = useContext(GlobalContext);
+    const { state, handleClick, sliceGithubJobs, countPage } = useContext(GlobalContext);
     const { githubJobs, isLoading } = state;
 
     return (
@@ -13,7 +14,7 @@ export default function CardContainer() {
             {isLoading && 'Loading...'}
             <Card>
             {!isLoading && githubJobs.length > 0 &&
-                githubJobs.map(job => (
+                sliceGithubJobs.map(job => (
                     <Card.Link key={job.id} to={`/details/${job.id}`}>
                         <Card.Group>
                             <Card.Image src={job.company_logo} />
@@ -27,6 +28,15 @@ export default function CardContainer() {
                         </Card.Group>
                     </Card.Link>
                 ))}
+                <ReactPaginate
+                    previousLabel={"<"}
+                    nextLabel={">"}
+                    breakLabel={"..."}
+                    pageCount={countPage}
+                    onPageChange={handleClick}
+                    containerClassName={"pagination"}
+                    activeClassName={"active"}
+                />
             </Card>
         </>
     )
