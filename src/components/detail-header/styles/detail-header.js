@@ -3,8 +3,34 @@ import {Link as RouterLink } from 'react-router-dom';
 
 export const Container = styled.div``;
 
-export const Link = styled(RouterLink)``;
+export const Link = styled(RouterLink)`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1E86FF;
+    padding-left: 15px;
+`;
 
-export const SubTitle = styled.p``;
+export const SubTitle = styled.p`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #B9BDCF;
+    padding-top: 36px;
+    padding-bottom: 16px;
+`;
 
-export const Content = styled.p``;
+export const Content = styled.p`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #334680;
+    padding-bottom: 36px;
+`;

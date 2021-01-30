@@ -1,40 +1,40 @@
 import React from 'react';
-import { Container, Group, Title, Type, Date, Image, SubTitle, Company, Description } from './styles/detail-container';
+import { Container, Group, Title, Type, Date, Image, SubTitle, Location, Description } from './styles/detail-container';
 
-export default function DetailContainer({ children, ...restProps }) {
+export default function DetailContent({ children, ...restProps }) {
     return (
         <Container {...restProps}>{children}</Container>
     )
 }
 
-DetailContainer.Group = function DetailContainerGroup({ children, ...restProps }) {
+DetailContent.Group = function DetailContentGroup({ children, ...restProps }) {
     return <Group {...restProps}>{children}</Group>
 }
 
-DetailContainer.Title = function DetailContainerTitle({ children, ...restProps }) {
+DetailContent.Title = function DetailContentTitle({ children, ...restProps }) {
     return <Title {...restProps}>{children}</Title>
 }
 
-DetailContainer.Type = function DetailContainerType({ children, ...restProps }) {
+DetailContent.Type = function DetailContentType({ children, ...restProps }) {
     return <Type {...restProps}>{children}</Type>
 }
 
-DetailContainer.Date = function DetailContainerDate({ children, ...restProps }) {
+DetailContent.Date = function DetailContentDate({ children, ...restProps }) {
     return <Date {...restProps}>{children}</Date>
 }
 
-DetailContainer.Image = function DetailContainerImage({ ...restProps }) {
+DetailContent.Image = function DetailContentImage({ ...restProps }) {
     return <Image {...restProps} />
 }
 
-DetailContainer.SubTitle = function DetailContainerSubTitle({ children, ...restProps }) {
+DetailContent.SubTitle = function DetailContentSubTitle({ children, ...restProps }) {
     return <SubTitle {...restProps}>{children}</SubTitle>
 }
 
-DetailContainer.Company = function DetailContainerCompany({ children, ...restProps }) {
-    return <Company {...restProps}>{children}</Company>
+DetailContent.Location = function DetailContentLocation({ children, ...restProps }) {
+    return <Location {...restProps}>{children}</Location>
 }
 
-DetailContainer.Description = function DetailContainerDescription({ children, ...restProps }) {
+DetailContent.Description = function DetailContentDescription({ children, ...restProps }) {
     return <Description {...restProps}>{children}</Description>
 }

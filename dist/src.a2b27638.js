@@ -36331,7 +36331,41 @@ function Main({
 }) {
   return /*#__PURE__*/_react.default.createElement(_main.Container, restProps, children);
 }
-},{"react":"node_modules/react/index.js","./styles/main":"src/components/main/styles/main.js"}],"src/components/detail-header/styles/detail-header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/main":"src/components/main/styles/main.js"}],"src/components/detail/styles/detail.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div``;
+exports.Container = Container;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/detail/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Detail;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _detail = require("./styles/detail");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Detail({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detail.Container, restProps, children);
+}
+},{"react":"node_modules/react/index.js","./styles/detail":"src/components/detail/styles/detail.js"}],"src/components/detail-header/styles/detail-header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36347,11 +36381,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Container = _styledComponents.default.div``;
 exports.Container = Container;
-const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
+const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1E86FF;
+    padding-left: 15px;
+`;
 exports.Link = Link;
-const SubTitle = _styledComponents.default.p``;
+const SubTitle = _styledComponents.default.p`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #B9BDCF;
+    padding-top: 36px;
+    padding-bottom: 16px;
+`;
 exports.SubTitle = SubTitle;
-const Content = _styledComponents.default.p``;
+const Content = _styledComponents.default.p`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #334680;
+    padding-bottom: 36px;
+`;
 exports.Content = Content;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/detail-header/index.js":[function(require,module,exports) {
 "use strict";
@@ -36400,29 +36460,104 @@ DetailHeader.Content = function DetailHeaderContent({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Description = exports.Company = exports.SubTitle = exports.Image = exports.Date = exports.Type = exports.Title = exports.Group = exports.Container = void 0;
+exports.Description = exports.Location = exports.SubTitle = exports.Image = exports.Date = exports.Type = exports.Title = exports.Group = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    /* @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        column-gap: 77px;
+    } */
+`;
 exports.Container = Container;
-const Group = _styledComponents.default.div``;
+const Group = _styledComponents.default.div`
+    &:last-of-type {
+        padding-top: 34px;
+        padding-bottom: 34px;
+        display: grid;
+        grid-template-columns: repeat(2, 100px);
+    }
+`;
 exports.Group = Group;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #334680;
+`;
 exports.Title = Title;
-const Type = _styledComponents.default.p``;
+const Type = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #334680;
+    border: 1px solid #334680;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 6px 8px;
+    width: 70px;
+`;
 exports.Type = Type;
-const Date = _styledComponents.default.p``;
+const Date = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #B7BCCE;
+    /* grid-column: 3/4; */
+    align-self: end;
+    padding-top: 10px;
+`;
 exports.Date = Date;
-const Image = _styledComponents.default.img``;
+const Image = _styledComponents.default.img`
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    width: 50px;
+    height: 50px;
+`;
 exports.Image = Image;
-const SubTitle = _styledComponents.default.h3``;
+const SubTitle = _styledComponents.default.h3`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #334680;
+    padding-bottom: 10px;
+`;
 exports.SubTitle = SubTitle;
-const Company = _styledComponents.default.p``;
-exports.Company = Company;
-const Description = _styledComponents.default.p``;
+const Location = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #B9BDCF;
+    background-image: url('../images/public.svg');
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    padding-left: 1.5rem;
+    /* grid-column: 2 / 3; */
+    align-self: end;
+`;
+exports.Location = Location;
+const Description = _styledComponents.default.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    color: #334680;
+`;
 exports.Description = Description;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/detail-container/index.js":[function(require,module,exports) {
 "use strict";
@@ -36430,7 +36565,7 @@ exports.Description = Description;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = DetailContainer;
+exports.default = DetailContent;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -36438,61 +36573,61 @@ var _detailContainer = require("./styles/detail-container");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function DetailContainer({
+function DetailContent({
   children,
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Container, restProps, children);
 }
 
-DetailContainer.Group = function DetailContainerGroup({
+DetailContent.Group = function DetailContentGroup({
   children,
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Group, restProps, children);
 };
 
-DetailContainer.Title = function DetailContainerTitle({
+DetailContent.Title = function DetailContentTitle({
   children,
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Title, restProps, children);
 };
 
-DetailContainer.Type = function DetailContainerType({
+DetailContent.Type = function DetailContentType({
   children,
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Type, restProps, children);
 };
 
-DetailContainer.Date = function DetailContainerDate({
+DetailContent.Date = function DetailContentDate({
   children,
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Date, restProps, children);
 };
 
-DetailContainer.Image = function DetailContainerImage({ ...restProps
+DetailContent.Image = function DetailContentImage({ ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Image, restProps);
 };
 
-DetailContainer.SubTitle = function DetailContainerSubTitle({
+DetailContent.SubTitle = function DetailContentSubTitle({
   children,
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.SubTitle, restProps, children);
 };
 
-DetailContainer.Company = function DetailContainerCompany({
+DetailContent.Location = function DetailContentLocation({
   children,
   ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_detailContainer.Company, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Location, restProps, children);
 };
 
-DetailContainer.Description = function DetailContainerDescription({
+DetailContent.Description = function DetailContentDescription({
   children,
   ...restProps
 }) {
@@ -36534,13 +36669,19 @@ Object.defineProperty(exports, "Main", {
     return _main.default;
   }
 });
+Object.defineProperty(exports, "Detail", {
+  enumerable: true,
+  get: function () {
+    return _detail.default;
+  }
+});
 Object.defineProperty(exports, "DetailHeader", {
   enumerable: true,
   get: function () {
     return _detailHeader.default;
   }
 });
-Object.defineProperty(exports, "DetailContainer", {
+Object.defineProperty(exports, "DetailContent", {
   enumerable: true,
   get: function () {
     return _detailContainer.default;
@@ -36557,12 +36698,14 @@ var _optForm = _interopRequireDefault(require("./opt-form"));
 
 var _main = _interopRequireDefault(require("./main"));
 
+var _detail = _interopRequireDefault(require("./detail"));
+
 var _detailHeader = _interopRequireDefault(require("./detail-header"));
 
 var _detailContainer = _interopRequireDefault(require("./detail-container"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js","./main":"src/components/main/index.js","./detail-header":"src/components/detail-header/index.js","./detail-container":"src/components/detail-container/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./form":"src/components/form/index.js","./card":"src/components/card/index.js","./opt-form":"src/components/opt-form/index.js","./main":"src/components/main/index.js","./detail":"src/components/detail/index.js","./detail-header":"src/components/detail-header/index.js","./detail-container":"src/components/detail-container/index.js"}],"src/hooks/use-context.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36912,13 +37055,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Home() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_form.default, null)), /*#__PURE__*/_react.default.createElement(_components.Main, null, /*#__PURE__*/_react.default.createElement(_optForm.default, null), /*#__PURE__*/_react.default.createElement(_card.default, null)));
 }
-},{"react":"node_modules/react/index.js","../components":"src/components/index.js","../containers/card":"src/containers/card.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js","../containers/opt-form":"src/containers/opt-form.js"}],"src/pages/details.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js","../containers/card":"src/containers/card.js","../containers/form":"src/containers/form.js","../containers/header":"src/containers/header.js","../containers/opt-form":"src/containers/opt-form.js"}],"src/containers/detail.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Details;
+exports.default = DetailContainer;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -36926,9 +37069,9 @@ var _reactRouterDom = require("react-router-dom");
 
 var _components = require("../components");
 
-var _header = _interopRequireDefault(require("../containers/header"));
-
 var _globalContext = require("../context/globalContext");
+
+var _header = _interopRequireDefault(require("../containers/header"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36936,7 +37079,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function Details() {
+function DetailContainer() {
   const {
     id
   } = (0, _reactRouterDom.useParams)();
@@ -36947,22 +37090,39 @@ function Details() {
     githubJobs
   } = state;
   const findTheSameId = githubJobs.find(job => job.id === id);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_components.Detail, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
     to: "/"
   }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, {
     dangerouslySetInnerHTML: {
       __html: findTheSameId.how_to_apply
     }
-  })), /*#__PURE__*/_react.default.createElement(_components.DetailContainer, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Type, null, findTheSameId.type), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Date, null, findTheSameId.created_at)), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Image, {
+  })), /*#__PURE__*/_react.default.createElement(_components.DetailContent, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Type, null, findTheSameId.type), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Date, null, findTheSameId.created_at)), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Image, {
     src: findTheSameId.company_logo,
     alt: `Logo of this componey ${findTheSameId.company}`
-  }), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.SubTitle, null, findTheSameId.company), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Company, null, findTheSameId.location)), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Description, {
+  }), /*#__PURE__*/_react.default.createElement(_components.DetailContent.SubTitle, null, findTheSameId.company), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Location, null, findTheSameId.location)), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Description, {
     dangerouslySetInnerHTML: {
       __html: findTheSameId.description
     }
   }))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js","../containers/header":"src/containers/header.js","../context/globalContext":"src/context/globalContext.js"}],"src/pages/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js","../context/globalContext":"src/context/globalContext.js","../containers/header":"src/containers/header.js"}],"src/pages/details.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Details;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _detail = _interopRequireDefault(require("../containers/detail"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Details() {
+  return /*#__PURE__*/_react.default.createElement(_detail.default, null);
+}
+},{"react":"node_modules/react/index.js","../containers/detail":"src/containers/detail.js"}],"src/pages/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37085,7 +37245,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54871" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57697" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
