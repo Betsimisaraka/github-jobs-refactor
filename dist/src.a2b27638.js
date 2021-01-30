@@ -36400,7 +36400,7 @@ DetailHeader.Content = function DetailHeaderContent({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Date = exports.Type = exports.Title = exports.Group = exports.Container = void 0;
+exports.Description = exports.Company = exports.SubTitle = exports.Image = exports.Date = exports.Type = exports.Title = exports.Group = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -36416,6 +36416,14 @@ const Type = _styledComponents.default.p``;
 exports.Type = Type;
 const Date = _styledComponents.default.p``;
 exports.Date = Date;
+const Image = _styledComponents.default.img``;
+exports.Image = Image;
+const SubTitle = _styledComponents.default.h3``;
+exports.SubTitle = SubTitle;
+const Company = _styledComponents.default.p``;
+exports.Company = Company;
+const Description = _styledComponents.default.p``;
+exports.Description = Description;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/detail-container/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -36463,6 +36471,32 @@ DetailContainer.Date = function DetailContainerDate({
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_detailContainer.Date, restProps, children);
+};
+
+DetailContainer.Image = function DetailContainerImage({ ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Image, restProps);
+};
+
+DetailContainer.SubTitle = function DetailContainerSubTitle({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.SubTitle, restProps, children);
+};
+
+DetailContainer.Company = function DetailContainerCompany({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Company, restProps, children);
+};
+
+DetailContainer.Description = function DetailContainerDescription({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_detailContainer.Description, restProps, children);
 };
 },{"react":"node_modules/react/index.js","./styles/detail-container":"src/components/detail-container/styles/detail-container.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
@@ -36636,7 +36670,7 @@ function GlobalContextProvider({
     setTimeout(() => {
       async function fetchData() {
         const CORS = "https://cors-anywhere.herokuapp.com/";
-        const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}&markdown=true`;
+        const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}&markdown`;
         const response = await fetch(CORS + URL_API);
         const data = await response.json(); //Sharing into five each page
         // setCountPage(Math.ceil(data.length / perPage));
@@ -36915,7 +36949,18 @@ function Details() {
   const findTheSameId = githubJobs.find(job => job.id === id);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
     to: "/"
-  }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, null, findTheSameId.how_to_apply)), /*#__PURE__*/_react.default.createElement(_components.DetailContainer, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Type, null, findTheSameId.type), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Date, null, findTheSameId.created_at)))));
+  }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, {
+    dangerouslySetInnerHTML: {
+      __html: findTheSameId.how_to_apply
+    }
+  })), /*#__PURE__*/_react.default.createElement(_components.DetailContainer, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Type, null, findTheSameId.type), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Date, null, findTheSameId.created_at)), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Image, {
+    src: findTheSameId.company_logo,
+    alt: `Logo of this componey ${findTheSameId.company}`
+  }), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.SubTitle, null, findTheSameId.company), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Company, null, findTheSameId.location)), /*#__PURE__*/_react.default.createElement(_components.DetailContainer.Description, {
+    dangerouslySetInnerHTML: {
+      __html: findTheSameId.description
+    }
+  }))));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components":"src/components/index.js","../containers/header":"src/containers/header.js","../context/globalContext":"src/context/globalContext.js"}],"src/pages/index.js":[function(require,module,exports) {
 "use strict";
@@ -37040,7 +37085,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59648" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54871" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

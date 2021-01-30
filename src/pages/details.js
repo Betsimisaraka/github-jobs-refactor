@@ -18,7 +18,7 @@ export default function Details() {
                 <DetailHeader>
                     <DetailHeader.Link to="/">⬅ Back to search</DetailHeader.Link>
                     <DetailHeader.SubTitle>How to apply</DetailHeader.SubTitle>
-                    <DetailHeader.Content>{findTheSameId.how_to_apply}</DetailHeader.Content>
+                    <DetailHeader.Content dangerouslySetInnerHTML={{__html:findTheSameId.how_to_apply}} />
                 </DetailHeader>
                 <DetailContainer>
                     <DetailContainer.Group>
@@ -26,6 +26,12 @@ export default function Details() {
                         <DetailContainer.Type>{findTheSameId.type}</DetailContainer.Type>
                         <DetailContainer.Date>{findTheSameId.created_at}</DetailContainer.Date>
                     </DetailContainer.Group>
+                    <DetailContainer.Group>
+                        <DetailContainer.Image  src={findTheSameId.company_logo} alt={`Logo of this componey ${findTheSameId.company}`} />
+                        <DetailContainer.SubTitle>{findTheSameId.company}</DetailContainer.SubTitle>
+                        <DetailContainer.Company>{findTheSameId.location}</DetailContainer.Company>
+                    </DetailContainer.Group>
+                    <DetailContainer.Description dangerouslySetInnerHTML={{__html:findTheSameId.description}} />
                 </DetailContainer>
             </HeaderContainer>
 
