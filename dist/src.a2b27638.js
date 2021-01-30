@@ -36343,7 +36343,16 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        column-gap: 22px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;        
+    }
+`;
 exports.Container = Container;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/detail/index.js":[function(require,module,exports) {
 "use strict";
@@ -36379,7 +36388,11 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+     @media (min-width: 1000px) {
+        grid-column: 1 / 3;
+     }
+`;
 exports.Container = Container;
 const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
     font-family: 'Poppins';
@@ -36467,14 +36480,19 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-    /* @media (min-width: 1000px) {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        column-gap: 77px;
-    } */
+    @media (min-width: 1000px) {
+        grid-column: 3 / 8;
+    }
+    
 `;
 exports.Container = Container;
 const Group = _styledComponents.default.div`
+     @media (min-width: 1000px) {
+        &:first-of-type {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+     }
     &:last-of-type {
         padding-top: 34px;
         padding-bottom: 34px;
@@ -36490,6 +36508,11 @@ const Title = _styledComponents.default.h2`
     font-size: 24px;
     line-height: 28px;
     color: #334680;
+    margin: 0;
+
+    @media (min-width: 1000px) {
+        grid-column: 1 / 2
+    }
 `;
 exports.Title = Title;
 const Type = _styledComponents.default.p`
@@ -36504,6 +36527,10 @@ const Type = _styledComponents.default.p`
     border-radius: 4px;
     padding: 6px 8px;
     width: 70px;
+
+    @media (min-width: 1000px) {
+        grid-column: 2 / 3
+    }
 `;
 exports.Type = Type;
 const Date = _styledComponents.default.p`
@@ -36513,9 +36540,14 @@ const Date = _styledComponents.default.p`
     font-size: 12px;
     line-height: 14px;
     color: #B7BCCE;
-    /* grid-column: 3/4; */
+    grid-column: 3/4;
     align-self: end;
     padding-top: 10px;
+
+    @media (min-width: 1000px) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
 `;
 exports.Date = Date;
 const Image = _styledComponents.default.img`
@@ -36546,7 +36578,7 @@ const Location = _styledComponents.default.p`
     background-repeat: no-repeat;
     background-size: 1rem;
     padding-left: 1.5rem;
-    /* grid-column: 2 / 3; */
+    grid-column: 2 / 3;
     align-self: end;
 `;
 exports.Location = Location;

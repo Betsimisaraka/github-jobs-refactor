@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import {Link as RouterLink } from 'react-router-dom';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+     @media (min-width: 1000px) {
+        grid-column: 1 / 3;
+     }
+`;
 
 export const Link = styled(RouterLink)`
     font-family: 'Poppins';
