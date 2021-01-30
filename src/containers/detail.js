@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { AiOutlineClockCircle } from 'react-icons/ai';
 import { Detail, DetailContent, DetailHeader } from '../components';
 import { GlobalContext } from '../context/globalContext';
 import HeaderContainer from '../containers/header';
+import { DateFormated } from '../utils/date-format';
 
 export default function DetailContainer() {
     const { id } = useParams();
@@ -25,7 +27,7 @@ export default function DetailContainer() {
                 <DetailContent.Group>
                     <DetailContent.Title>{findTheSameId.title}</DetailContent.Title>
                     <DetailContent.Type>{findTheSameId.type}</DetailContent.Type>
-                    <DetailContent.Date>{findTheSameId.created_at}</DetailContent.Date>
+                    <DetailContent.Date><AiOutlineClockCircle /> {DateFormated(findTheSameId.created_at)} ago </DetailContent.Date>
                 </DetailContent.Group>
                 <DetailContent.Group>
                     <DetailContent.Image  src={findTheSameId.company_logo} alt={`Logo of this componey ${findTheSameId.company}`} />

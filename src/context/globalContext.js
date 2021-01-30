@@ -11,7 +11,7 @@ function GlobalContextProvider({ children }) {
         setTimeout(() => {
             async function fetchData() {
                 const CORS = "https://cors-anywhere.herokuapp.com/";
-                const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}&markdown`;
+                const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}`;
                 const response = await fetch(CORS + URL_API);
                 const data = await response.json();
                 //Sharing into five each page

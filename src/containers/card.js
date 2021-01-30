@@ -1,27 +1,33 @@
 import React, { useContext } from 'react'
 import { Card } from '../components';
 import { GlobalContext } from '../context/globalContext';
+import { AiOutlineClockCircle } from 'react-icons/ai';
+import  { DateFormated } from '../utils/date-format';
 
 export default function CardContainer() {
     const { state } = useContext(GlobalContext);
-    const { githubJobs } = state;
+    const { githubJobs, isLoading } = state;
 
     return (
-        <Card>
-            {githubJobs.map(job => (
-                <Card.Link key={job.id} to={`/details/${job.id}`}>
-                    <Card.Group>
-                        <Card.Image src={job.company_logo} />
-                        <Card.Frame>
-                            <Card.Company>{job.company}</Card.Company>
-                            <Card.Title>{job.title}</Card.Title>
-                            <Card.Type>{job.type}</Card.Type>
-                        </Card.Frame>
-                        <Card.Location>{job.location}</Card.Location>
-                        <Card.Date>{job.created_at}</Card.Date>
-                    </Card.Group>
-                </Card.Link>
-            ))}
-        </Card>
+        <>
+            {isLoading && 'Loading...'}
+            <Card>
+            {!isLoading && githubJobs.length > 0 &&
+                githubJobs.map(job => (
+                    <Card.Link key={job.id} to={`/details/${job.id}`}>
+                        <Card.Group>
+                            <Card.Image src={job.company_logo} />
+                            <Card.Frame>
+                                <Card.Company>{job.company}</Card.Company>
+                                <Card.Title>{job.title}</Card.Title>
+                                <Card.Type>{job.type}</Card.Type>
+                            </Card.Frame>
+                            <Card.Location>{job.location}</Card.Location>
+                            <Card.Date><AiOutlineClockCircle /> {DateFormated(job.created_at)} ago</Card.Date>
+                        </Card.Group>
+                    </Card.Link>
+                ))}
+            </Card>
+        </>
     )
 }
