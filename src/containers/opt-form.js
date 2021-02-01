@@ -3,8 +3,7 @@ import { OptForm } from '../components';
 import { GlobalContext } from '../context/globalContext';
 
 export default function OptFormContainer() {
-    const { dispatch, state } = useContext(GlobalContext);
-    const { githubJobs } = state;
+    const { dispatch } = useContext(GlobalContext);
 
     let cities = [
         { id: 1, name: "London" },
@@ -16,23 +15,11 @@ export default function OptFormContainer() {
     const [location, setLocation] = useState('');
     const [fullTime, setFullTime] = useState(false);
     const [selectedCities, setSelectedCities] = useState(null);
-    // const [checkCity, setCheckCity] = useState(''); 
 
     function handleClick() {
         setFullTime(!fullTime);
         dispatch({ type: "fulltime", value: true });
     }
-
-    // function handleCity(e) {
-    //     setCheckCity(e.target.value);
-    // }
-
-    // useEffect(() => {
-    //     const input = checkCity;
-    //     const filter = githubJobs.filter((job, city) => job.location.toLowerCase().includes(input.toLowerCase()));
-    //     dispatch({ type: "location", value: filter })
-    //     console.log(filter);
-    // }, [checkCity])
 
     function handleCity(city) {
         if (selectedCities && city.id === selectedCities.id) {
@@ -60,13 +47,15 @@ export default function OptFormContainer() {
         <OptForm>
             <OptForm.Base>
                 <OptForm.Group>
-                    <OptForm.Input 
-                        type="checkbox"
-                        name="fullTime"
-                        checked={fullTime}
-                        onChange={handleClick}
-                    />
-                    <OptForm.Label>Full time</OptForm.Label>
+                    <OptForm.Label>
+                        <OptForm.Input 
+                            type="checkbox"
+                            name="fullTime"
+                            checked={fullTime}
+                            onChange={handleClick}
+                        />
+                        <OptForm.Span> Full time </OptForm.Span>
+                    </OptForm.Label>
                 </OptForm.Group>
                 <OptForm.Group>
                     <OptForm.Label>Location</OptForm.Label>
@@ -82,13 +71,14 @@ export default function OptFormContainer() {
                 <OptForm.Frame>
                     {cities.map(city => (
                         <OptForm.Group key={city.id}>
-                            <OptForm.Input 
-                                type="radio"
-                                value={city.name}
-                                checked={selectedCities ? city.id === selectedCities.id : null}
-                                onChange={() => handleCity(city)}
-                            />
-                            <OptForm.Label>{city.name}</OptForm.Label>
+                            <OptForm.Label>
+                                <OptForm.Input 
+                                    type="checkbox"
+                                    checked={selectedCities ? city.id === selectedCities.id : false}
+                                    onChange={() => handleCity(city)}
+                                />
+                                <OptForm.Span>{city.name}</OptForm.Span>
+                            </OptForm.Label>
                         </OptForm.Group>
                     ))}
                 </OptForm.Frame>

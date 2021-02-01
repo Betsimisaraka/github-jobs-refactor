@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 export const Container = styled.ul`
+    grid-column: 3 / 6;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 32px;
@@ -46,6 +47,7 @@ export const Group = styled.li`
     ${Image} {
         width: 100%;
         border-radius: 4px;
+        height: 100%;
     }
     @media (min-width: 1000px) {
         grid-template-columns: repeat(7, 1fr);

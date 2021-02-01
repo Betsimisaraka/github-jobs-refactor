@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.section``;
+export const Container = styled.section`
+        @media (min-width: 1000px) {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;      
+        }
+    grid-column: 1 / 3; 
+`;
 
 export const Title = styled.h1`
     font-family: 'Poppins';

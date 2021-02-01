@@ -12,9 +12,11 @@ export default function FormContainer() {
         e.preventDefault();
         const input = e.target.searchJobs.value;
         const inputToLowerCase = input.toLowerCase();
-        const filteredGithubJobs = githubJobs
-            .filter(githubJob => githubJob.title.toLowerCase().includes(inputToLowerCase)
-            || githubJob.company.toLowerCase().includes(inputToLowerCase));
+        const filteredGithubJobs = githubJobs && githubJobs
+            .filter(githubJob => 
+                githubJob.title.toLowerCase().includes(inputToLowerCase)
+                || githubJob.company.toLowerCase().includes(inputToLowerCase)
+                || githubJob.location.toLowerCase().includes(inputToLowerCase));
         
         dispatch({ type: "SEARCH_GITHUB_JOBS", filteredGithubJobs });
         setValue('');

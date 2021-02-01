@@ -8,16 +8,18 @@ import { DateFormated } from '../utils/date-format';
 
 export default function DetailContainer() {
     const { id } = useParams();
+    console.log(id);
 
     const { state } = useContext(GlobalContext);
     const { githubJobs } = state;
 
     const findTheSameId = githubJobs && githubJobs.find(job => job.id === id);
+    console.log(findTheSameId);
 
     return (
         <>
+         <HeaderContainer />
         <Detail>
-            <HeaderContainer />
             <DetailHeader>
                 <DetailHeader.Link to="/">⬅ Back to search</DetailHeader.Link>
                 <DetailHeader.SubTitle>How to apply</DetailHeader.SubTitle>
@@ -27,8 +29,8 @@ export default function DetailContainer() {
                 <DetailContent.Group>
                     <DetailContent.Title>{findTheSameId.title}</DetailContent.Title>
                     <DetailContent.Type>{findTheSameId.type}</DetailContent.Type>
-                    <DetailContent.Date><AiOutlineClockCircle /> {DateFormated(findTheSameId.created_at)} ago </DetailContent.Date>
                 </DetailContent.Group>
+                <DetailContent.Date><AiOutlineClockCircle /> {DateFormated(findTheSameId.created_at)} ago </DetailContent.Date>
                 <DetailContent.Group>
                     <DetailContent.Image  src={findTheSameId.company_logo} alt={`Logo of this componey ${findTheSameId.company}`} />
                     <DetailContent.SubTitle>{findTheSameId.company}</DetailContent.SubTitle>

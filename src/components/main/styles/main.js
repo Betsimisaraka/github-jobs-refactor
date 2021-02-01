@@ -7,7 +7,11 @@ export const Container = styled.div`
     padding-top: 42px;
 
     @media (min-width: 1000px) {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
         padding-top: 42px;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;      
     }
 `;

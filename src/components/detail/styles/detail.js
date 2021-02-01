@@ -5,8 +5,8 @@ export const Container = styled.div`
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         column-gap: 22px;
-        max-width: 1000px;
+        max-width: 1100px;
         margin-left: auto;
-        margin-right: auto;        
+        margin-right: auto;     
     }
 `;

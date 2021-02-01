@@ -35379,7 +35379,14 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.section``;
+const Container = _styledComponents.default.section`
+        @media (min-width: 1000px) {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;      
+        }
+    grid-column: 1 / 3; 
+`;
 exports.Container = Container;
 const Title = _styledComponents.default.h1`
     font-family: 'Poppins';
@@ -35454,6 +35461,11 @@ const Container = _styledComponents.default.div`
     border-radius: 8px;
     display: flex;
     text-align: center;
+    @media (min-width: 1000px) {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;      
+    }
 `;
 exports.Container = Container;
 const Base = _styledComponents.default.form`
@@ -35566,6 +35578,7 @@ var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.ul`
+    grid-column: 3 / 6;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 32px;
@@ -35610,6 +35623,7 @@ const Group = _styledComponents.default.li`
     ${Image} {
         width: 100%;
         border-radius: 4px;
+        height: 100%;
     }
     @media (min-width: 1000px) {
         grid-template-columns: repeat(7, 1fr);
@@ -35780,19 +35794,22 @@ Card.Date = function CardDate({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Label = exports.Input = exports.Frame = exports.Group = exports.Base = exports.Container = void 0;
+exports.Span = exports.Label = exports.Input = exports.Frame = exports.Group = exports.Base = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
+    grid-column: 1 / 3;
 `;
 exports.Container = Container;
 const Base = _styledComponents.default.form`
 `;
 exports.Base = Base;
 const Group = _styledComponents.default.fieldset`
+    padding: 0;
+    margin: 0 20px 20px 0px;
      &:nth-child(2) {
         display: flex;
         flex-direction: column;
@@ -35822,15 +35839,7 @@ const Input = _styledComponents.default.input`
 `;
 exports.Input = Input;
 const Label = _styledComponents.default.label`
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #334680;
-    margin-left: 12px;
-
-    &:nth-child(1) {
+    &:nth-of-type(1) {
         font-family: 'Poppins';
         font-style: normal;
         font-weight: bold;
@@ -35838,10 +35847,22 @@ const Label = _styledComponents.default.label`
         line-height: 21px;
         text-transform: uppercase;
         color: #B9BDCF;
-        padding-bottom: 14px;
+        margin-left: 0;
     }
 `;
 exports.Label = Label;
+const Span = _styledComponents.default.span`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #334680;
+    margin-left: 12px;
+    text-transform: none;
+    padding-bottom: 0;
+`;
+exports.Span = Span;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/opt-form/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -35868,6 +35889,13 @@ OptForm.Base = function OptFormBase({
   ...restProps
 }) {
   return /*#__PURE__*/_react.default.createElement(_optForm.Base, restProps, children);
+};
+
+OptForm.Span = function OptFormSpan({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_optForm.Span, restProps, children);
 };
 
 OptForm.Group = function OptFormGroup({
@@ -35916,8 +35944,12 @@ const Container = _styledComponents.default.div`
     padding-top: 42px;
 
     @media (min-width: 1000px) {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
         padding-top: 42px;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;      
     }
 `;
 exports.Container = Container;
@@ -35958,9 +35990,9 @@ const Container = _styledComponents.default.div`
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         column-gap: 22px;
-        max-width: 1000px;
+        max-width: 1100px;
         margin-left: auto;
-        margin-right: auto;        
+        margin-right: auto;     
     }
 `;
 exports.Container = Container;
@@ -36011,7 +36043,7 @@ const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
     font-size: 14px;
     line-height: 21px;
     color: #1E86FF;
-    padding-left: 15px;
+    text-decoration: none;
 `;
 exports.Link = Link;
 const SubTitle = _styledComponents.default.p`
@@ -36036,6 +36068,7 @@ const Content = _styledComponents.default.p`
     color: #334680;
     padding-bottom: 36px;
     margin: 0;
+    max-width: 200px;
 `;
 exports.Content = Content;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/detail-header/index.js":[function(require,module,exports) {
@@ -36099,10 +36132,11 @@ const Container = _styledComponents.default.div`
 `;
 exports.Container = Container;
 const Group = _styledComponents.default.div`
-     @media (min-width: 1000px) {
+    @media (min-width: 1000px) {
         &:first-of-type {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+             display: flex;
+             flex-direction: row;
+             align-items: center;
         }
      }
     &:last-of-type {
@@ -36110,6 +36144,7 @@ const Group = _styledComponents.default.div`
         padding-bottom: 34px;
         display: grid;
         grid-template-columns: repeat(2, 100px);
+        column-gap: 12px;
     }
 `;
 exports.Group = Group;
@@ -36140,9 +36175,10 @@ const Type = _styledComponents.default.p`
     padding: 6px 8px;
     width: 70px;
     margin: 0;
-
+    margin-top: 12px;
     @media (min-width: 1000px) {
-        grid-column: 2 / 3
+        margin-left: 16px;
+        margin-top: unset;
     }
 `;
 exports.Type = Type;
@@ -36167,8 +36203,9 @@ exports.Date = Date;
 const Image = _styledComponents.default.img`
     grid-column: 1 / 2;
     grid-row: 1 / 3;
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    border-radius: 4px;
+    height: 100%;
 `;
 exports.Image = Image;
 const SubTitle = _styledComponents.default.h3`
@@ -36463,21 +36500,22 @@ function GlobalContextProvider({
   const [offset, setOffeset] = (0, _react.useState)(0);
   const [perPage] = (0, _react.useState)(5);
   const [countPage, setCountPage] = (0, _react.useState)(0);
+
+  async function fetchData() {
+    const CORS = "https://cors-anywhere.herokuapp.com/";
+    const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}`;
+    const response = await fetch(CORS + URL_API);
+    const data = await response.json(); //Sharing into five each page
+
+    setCountPage(Math.ceil(data.length / perPage));
+    dispatch({
+      type: "FETCH_JOBS",
+      githubJob: data
+    });
+  }
+
   (0, _react.useEffect)(() => {
     setTimeout(() => {
-      async function fetchData() {
-        const CORS = "https://cors-anywhere.herokuapp.com/";
-        const URL_API = `https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${fullTime}`;
-        const response = await fetch(CORS + URL_API);
-        const data = await response.json(); //Sharing into five each page
-
-        setCountPage(Math.ceil(data.length / perPage));
-        dispatch({
-          type: "FETCH_JOBS",
-          githubJob: data
-        });
-      }
-
       fetchData();
     }, 500);
   }, [description, fullTime, location, offset]);
@@ -71318,7 +71356,7 @@ function CardContainer() {
     githubJobs,
     isLoading
   } = state;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isLoading && 'Loading...', /*#__PURE__*/_react.default.createElement(_components.Card, null, !isLoading && githubJobs.length > 0 && sliceGithubJobs.map(job => /*#__PURE__*/_react.default.createElement(_components.Card.Link, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isLoading && 'Loading...', /*#__PURE__*/_react.default.createElement(_components.Card, null, !isLoading && githubJobs && githubJobs.length > 0 && sliceGithubJobs.map(job => /*#__PURE__*/_react.default.createElement(_components.Card.Link, {
     key: job.id,
     to: `/details/${job.id}`
   }, /*#__PURE__*/_react.default.createElement(_components.Card.Group, null, /*#__PURE__*/_react.default.createElement(_components.Card.Image, {
@@ -71365,7 +71403,7 @@ function FormContainer() {
     e.preventDefault();
     const input = e.target.searchJobs.value;
     const inputToLowerCase = input.toLowerCase();
-    const filteredGithubJobs = githubJobs.filter(githubJob => githubJob.title.toLowerCase().includes(inputToLowerCase) || githubJob.company.toLowerCase().includes(inputToLowerCase));
+    const filteredGithubJobs = githubJobs && githubJobs.filter(githubJob => githubJob.title.toLowerCase().includes(inputToLowerCase) || githubJob.company.toLowerCase().includes(inputToLowerCase) || githubJob.location.toLowerCase().includes(inputToLowerCase));
     dispatch({
       type: "SEARCH_GITHUB_JOBS",
       filteredGithubJobs
@@ -71421,12 +71459,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function OptFormContainer() {
   const {
-    dispatch,
-    state
+    dispatch
   } = (0, _react.useContext)(_globalContext.GlobalContext);
-  const {
-    githubJobs
-  } = state;
   let cities = [{
     id: 1,
     name: "London"
@@ -71442,7 +71476,7 @@ function OptFormContainer() {
   }];
   const [location, setLocation] = (0, _react.useState)('');
   const [fullTime, setFullTime] = (0, _react.useState)(false);
-  const [selectedCities, setSelectedCities] = (0, _react.useState)(null); // const [checkCity, setCheckCity] = useState(''); 
+  const [selectedCities, setSelectedCities] = (0, _react.useState)(null);
 
   function handleClick() {
     setFullTime(!fullTime);
@@ -71450,16 +71484,7 @@ function OptFormContainer() {
       type: "fulltime",
       value: true
     });
-  } // function handleCity(e) {
-  //     setCheckCity(e.target.value);
-  // }
-  // useEffect(() => {
-  //     const input = checkCity;
-  //     const filter = githubJobs.filter((job, city) => job.location.toLowerCase().includes(input.toLowerCase()));
-  //     dispatch({ type: "location", value: filter })
-  //     console.log(filter);
-  // }, [checkCity])
-
+  }
 
   function handleCity(city) {
     if (selectedCities && city.id === selectedCities.id) {
@@ -71490,12 +71515,12 @@ function OptFormContainer() {
   (0, _react.useEffect)(() => {
     setSelectedCities(cities[2]);
   }, []);
-  return /*#__PURE__*/_react.default.createElement(_components.OptForm, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Base, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+  return /*#__PURE__*/_react.default.createElement(_components.OptForm, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Base, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
     type: "checkbox",
     name: "fullTime",
     checked: fullTime,
     onChange: handleClick
-  }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Full time")), /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Location"), /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+  }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Span, null, " Full time "))), /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, "Location"), /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
     type: "text",
     placeholder: "City, state, zip code or country",
     name: "location",
@@ -71504,12 +71529,11 @@ function OptFormContainer() {
     onKeyDown: handleLocation
   })), /*#__PURE__*/_react.default.createElement(_components.OptForm.Frame, null, cities.map(city => /*#__PURE__*/_react.default.createElement(_components.OptForm.Group, {
     key: city.id
-  }, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
-    type: "radio",
-    value: city.name,
-    checked: selectedCities ? city.id === selectedCities.id : null,
+  }, /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, /*#__PURE__*/_react.default.createElement(_components.OptForm.Input, {
+    type: "checkbox",
+    checked: selectedCities ? city.id === selectedCities.id : false,
     onChange: () => handleCity(city)
-  }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Label, null, city.name))))));
+  }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Span, null, city.name)))))));
 }
 },{"react":"node_modules/react/index.js","../components":"src/components/index.js","../context/globalContext":"src/context/globalContext.js"}],"src/pages/home.js":[function(require,module,exports) {
 "use strict";
@@ -71568,6 +71592,7 @@ function DetailContainer() {
   const {
     id
   } = (0, _reactRouterDom.useParams)();
+  console.log(id);
   const {
     state
   } = (0, _react.useContext)(_globalContext.GlobalContext);
@@ -71575,13 +71600,14 @@ function DetailContainer() {
     githubJobs
   } = state;
   const findTheSameId = githubJobs && githubJobs.find(job => job.id === id);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_components.Detail, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
+  console.log(findTheSameId);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_components.Detail, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader, null, /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Link, {
     to: "/"
   }, "\u2B05 Back to search"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.SubTitle, null, "How to apply"), /*#__PURE__*/_react.default.createElement(_components.DetailHeader.Content, {
     dangerouslySetInnerHTML: {
       __html: findTheSameId.how_to_apply
     }
-  })), /*#__PURE__*/_react.default.createElement(_components.DetailContent, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Type, null, findTheSameId.type), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Date, null, /*#__PURE__*/_react.default.createElement(_ai.AiOutlineClockCircle, null), " ", (0, _dateFormat.DateFormated)(findTheSameId.created_at), " ago ")), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Image, {
+  })), /*#__PURE__*/_react.default.createElement(_components.DetailContent, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Title, null, findTheSameId.title), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Type, null, findTheSameId.type)), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Date, null, /*#__PURE__*/_react.default.createElement(_ai.AiOutlineClockCircle, null), " ", (0, _dateFormat.DateFormated)(findTheSameId.created_at), " ago "), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Group, null, /*#__PURE__*/_react.default.createElement(_components.DetailContent.Image, {
     src: findTheSameId.company_logo,
     alt: `Logo of this componey ${findTheSameId.company}`
   }), /*#__PURE__*/_react.default.createElement(_components.DetailContent.SubTitle, null, findTheSameId.company), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Location, null, findTheSameId.location)), /*#__PURE__*/_react.default.createElement(_components.DetailContent.Description, {
@@ -71728,7 +71754,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59842" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51724" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

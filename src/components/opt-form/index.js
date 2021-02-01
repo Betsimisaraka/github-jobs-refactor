@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Base, Group, Input, Label, Frame } from './styles/opt-form';
+import { Container, Base, Group, Input, Label, Frame, Span } from './styles/opt-form';
 
 export default function OptForm({ children, ...restProps }) {
     return (
@@ -9,6 +9,10 @@ export default function OptForm({ children, ...restProps }) {
 
 OptForm.Base = function OptFormBase({ children, ...restProps }) {
     return <Base {...restProps}>{children}</Base>
+}
+
+OptForm.Span = function OptFormSpan({ children, ...restProps }) {
+    return <Span {...restProps}>{children}</Span>
 }
 
 OptForm.Group = function OptFormGroup({ children, ...restProps }) {

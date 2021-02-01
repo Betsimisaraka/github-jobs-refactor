@@ -14,7 +14,7 @@ export const Link = styled(RouterLink)`
     font-size: 14px;
     line-height: 21px;
     color: #1E86FF;
-    padding-left: 15px;
+    text-decoration: none;
 `;
 
 export const SubTitle = styled.p`
@@ -39,4 +39,5 @@ export const Content = styled.p`
     color: #334680;
     padding-bottom: 36px;
     margin: 0;
+    max-width: 200px;
 `;

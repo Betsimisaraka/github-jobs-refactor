@@ -8,10 +8,11 @@ export const Container = styled.div`
 `;
 
 export const Group = styled.div`
-     @media (min-width: 1000px) {
+    @media (min-width: 1000px) {
         &:first-of-type {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+             display: flex;
+             flex-direction: row;
+             align-items: center;
         }
      }
     &:last-of-type {
@@ -19,6 +20,7 @@ export const Group = styled.div`
         padding-bottom: 34px;
         display: grid;
         grid-template-columns: repeat(2, 100px);
+        column-gap: 12px;
     }
 `;
 
@@ -49,9 +51,10 @@ export const Type = styled.p`
     padding: 6px 8px;
     width: 70px;
     margin: 0;
-
+    margin-top: 12px;
     @media (min-width: 1000px) {
-        grid-column: 2 / 3
+        margin-left: 16px;
+        margin-top: unset;
     }
 `;
 
@@ -76,8 +79,9 @@ export const Date = styled.p`
 export const Image = styled.img`
     grid-column: 1 / 2;
     grid-row: 1 / 3;
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    border-radius: 4px;
+    height: 100%;
 `;
 
 export const SubTitle = styled.h3`

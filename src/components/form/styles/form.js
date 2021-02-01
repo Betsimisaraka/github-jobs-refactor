@@ -9,6 +9,11 @@ export const Container = styled.div`
     border-radius: 8px;
     display: flex;
     text-align: center;
+    @media (min-width: 1000px) {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;      
+    }
 `;
 
 export const Base = styled.form`

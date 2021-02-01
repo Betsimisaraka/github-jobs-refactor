@@ -13,7 +13,7 @@ export default function CardContainer() {
         <>
             {isLoading && 'Loading...'}
             <Card>
-            {!isLoading && githubJobs.length > 0 &&
+            {!isLoading && githubJobs && githubJobs.length > 0 &&
                 sliceGithubJobs.map(job => (
                     <Card.Link key={job.id} to={`/details/${job.id}`}>
                         <Card.Group>
